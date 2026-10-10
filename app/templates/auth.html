@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}{% if mode == 'register' %}Create account{% else %}Sign in{% endif %} | SentinelPass{% endblock %}
+{% block body_class %}auth-body{% endblock %}
+{% block content %}
+<main class="auth-layout">
+  <a class="brand auth-brand" href="/"><span class="brand-mark"><i></i><i></i><i></i></span><span>sentinel<span class="brand-light">pass</span></span></a>
+  <section class="auth-panel">
+    <div class="eyebrow"><span class="status-dot"></span> {% if mode == 'register' %}NEW ACCOUNT{% else %}PASSWORDLESS ACCESS{% endif %}</div>
+    <h1>{% if mode == 'register' %}Start with identity.{% else %}Welcome back.{% endif %}</h1>
+    <p class="muted">{% if mode == 'register' %}Verify your email before the account is activated.{% else %}Choose a verified channel. There are no passwords here.{% endif %}</p>
+    {% if mode == 'register' %}
+    <form id="register-form" class="form-stack">
+      <label>Full name<input name="full_name" autocomplete="name" required minlength="2" maxlength="120" placeholder="Jordan Lee"></label>
+      <label>Work email<input name="email" type="email" autocomplete="email" required maxlength="254" placeholder="jordan@company.com"></label>
+      <label>Phone number <span class="optional">OPTIONAL · INCLUDE COUNTRY CODE</span><input name="phone" type="tel" autocomplete="tel" placeholder="+1 555 010 2040"></label>
+      <button class="button button-primary button-wide" type="submit">Create account <span aria-hidden="true">↗</span></button>
+    </form>
+    {% else %}
+    <div class="segmented" role="tablist" aria-label="Sign-in method"><button class="segment active" data-method="email" role="tab" aria-selected="true">Email code</button><button class="segment" data-method="phone" role="tab" aria-selected="false">Phone code</button><button class="segment" data-method="qr" role="tab" aria-selected="false">QR login</button></div>
+    <form id="otp-request-form" class="form-stack">
+      <label id="destination-label">Email address<input name="destination" type="email" autocomplete="email" required placeholder="you@company.com"></label>
+      <button class="button button-primary button-wide" type="submit">Send verification code <span aria-hidden="true">↗</span></button>
+    </form>
+    <form id="otp-verify-form" class="form-stack hidden">
+      <div class="challenge-note" id="challenge-note"></div>
+      <label>Six-digit code<input name="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" minlength="6" maxlength="6" required placeholder="000000"></label>
+      <button class="button button-primary button-wide" type="submit">Verify and continue</button>
+      <button class="text-button" type="button" id="request-again">Use another code</button>
+    </form>
+    <div id="qr-login" class="qr-login hidden"><button class="button button-outline button-wide" id="create-qr" type="button">Create desktop request</button><div id="qr-result" class="qr-result"></div><p class="muted small">Scan with a browser already signed in on a trusted device. Requests expire after two minutes.</p></div>
+    {% endif %}
+    <div id="auth-status" class="form-message" role="status" aria-live="polite"></div>
+    <p class="auth-switch">{% if mode == 'register' %}Already registered? <a href="/login">Sign in</a>{% else %}New to SentinelPass? <a href="/register">Create an account</a>{% endif %}</p>
+    <a class="back-link" href="/">← Back to overview</a>
+  </section>
+  <aside class="auth-aside"><div class="aside-rule"></div><span class="mono">LOGIN INTENT ASSURANCE ENGINE</span><blockquote>“A valid code is one signal.<br>A trustworthy login is a decision.”</blockquote><p>Every challenge is single-use. Every decision leaves a record.</p><div class="aside-mark">SP<span> / 01</span></div></aside>
+</main>
+<script>window.SENTINEL_AUTH = {{ {"mode": mode, "next": next_url}|tojson }};</script>
+{% endblock %}

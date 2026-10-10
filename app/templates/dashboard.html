@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Overview | SentinelPass{% endblock %}
+{% block body_class %}console-body{% endblock %}
+{% block content %}
+<div class="console-shell">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand console-brand" href="/app"><span class="brand-mark"><i></i><i></i><i></i></span><span>sentinel<span class="brand-light">pass</span></span></a>
+    <div class="workspace-label">IDENTITY SECURITY <span>DEVELOPMENT</span></div>
+    <nav class="side-nav" aria-label="Main navigation">
+      <a href="#overview" data-view="overview" class="active"><span class="nav-icon">◫</span>Overview</a>
+      <a href="#authenticate" data-view="authenticate"><span class="nav-icon">⊕</span>Authenticate</a>
+      <a href="#history" data-view="history"><span class="nav-icon">≡</span>Login history</a>
+      <a href="#devices" data-view="devices"><span class="nav-icon">▣</span>Trusted devices</a>
+      <a href="#security" data-view="security"><span class="nav-icon">◇</span>Security center</a>
+      <a href="#timeline" data-view="timeline"><span class="nav-icon">⌁</span>Decision timeline</a>
+      <a href="#settings" data-view="settings"><span class="nav-icon">⚙</span>Account settings</a>
+    </nav>
+    <div class="sidebar-bottom"><div class="sidebar-policy"><span class="status-dot"></span><div><strong>LIAE policy active</strong><small>Rule-based · v1</small></div></div><div class="sidebar-user"><span class="avatar" id="user-avatar">SP</span><div class="user-mini"><strong id="sidebar-name">Loading account</strong><small id="sidebar-email"></small></div><button id="logout-button" class="icon-button" title="Sign out" aria-label="Sign out">↗</button></div></div>
+  </aside>
+  <main class="console-main">
+    <header class="console-header"><button id="menu-toggle" class="icon-button menu-toggle" aria-label="Open navigation">☰</button><div class="header-title"><span class="header-kicker">SENTINELPASS / <span id="header-section">OVERVIEW</span></span><h1 id="page-title">Security overview</h1></div><div class="header-actions"><span class="environment-badge"><i></i> DEVELOPMENT</span><button class="icon-button" id="alerts-shortcut" aria-label="Security alerts" title="Security alerts">◇<span class="notification-dot hidden" id="notification-dot"></span></button><button class="avatar header-avatar" id="account-shortcut" aria-label="Account settings">SP</button></div></header>
+    <div id="view-root" class="view-root" aria-live="polite"><div class="loading-state"><span class="spinner"></span> Loading security data</div></div>
+    <footer class="console-footer"><span>SentinelPass · Login Intent Assurance Engine</span><span>Authentication activity is user-scoped and recorded in this workspace database.</span></footer>
+  </main>
+</div>
+<script>window.SENTINEL_DASHBOARD = true;</script>
+{% endblock %}

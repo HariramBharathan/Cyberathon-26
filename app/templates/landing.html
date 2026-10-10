@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}SentinelPass | Login intent, assured{% endblock %}
+{% block content %}
+<div class="landing-shell">
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="SentinelPass home"><span class="brand-mark"><i></i><i></i><i></i></span><span>sentinel<span class="brand-light">pass</span></span></a>
+    <nav class="site-nav"><a href="#how-it-works">How it works</a><a href="#security">Security model</a><a class="button button-quiet" href="/login">Sign in</a></nav>
+  </header>
+  <main>
+    <section class="hero-section">
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><span class="status-dot"></span> PASSWORDLESS, WITH CONTEXT</div>
+        <h1>Every login has a reason.<br><span>Every decision has an explanation.</span></h1>
+        <p class="hero-lede">Authentication should prove more than possession of a code. SentinelPass binds each sign-in to its device, its intent, and a decision you can inspect.</p>
+        <div class="hero-actions"><a class="button button-primary" href="/register">Get started <span aria-hidden="true">↗</span></a><a class="button button-outline" href="/login">Sign in</a></div>
+        <div class="hero-footnote"><span class="mono">01 / 03</span><span>Rule-based risk. Transaction-bound approval.</span></div>
+      </div>
+      <div class="preview-frame reveal" aria-label="SentinelPass application preview">
+        <div class="preview-top"><span class="preview-brand"><span class="brand-mark mini"><i></i><i></i><i></i></span> SENTINELPASS</span><span class="preview-label">SECURITY OVERVIEW <span class="preview-live"></span></span></div>
+        <div class="preview-content">
+          <div class="preview-title"><div><div class="eyebrow">TUESDAY, OCTOBER 10</div><h2>Good morning, Alex</h2></div><span class="badge badge-secure">● Protected</span></div>
+          <div class="preview-stats"><div><span>AUTHENTICATIONS</span><strong>24</strong><small>Last 30 days</small></div><div><span>TRUSTED DEVICES</span><strong>3</strong><small>2 browser · 1 mobile</small></div></div>
+          <div class="preview-decision"><div class="decision-icon">✓</div><div><span class="mono">LOGIN INTENT ASSURANCE</span><strong>Request verified</strong><small>Known device · OTP valid · risk 08 / 100</small></div><span class="badge badge-low">LOW RISK</span></div>
+          <div class="preview-line"><span class="line-check">✓</span><span>Email challenge verified</span><time>09:42:16</time></div>
+          <div class="preview-line"><span class="line-check">✓</span><span>Device trust confirmed</span><time>09:42:17</time></div>
+          <div class="preview-line"><span class="line-check">✓</span><span>Session created for this browser</span><time>09:42:17</time></div>
+        </div>
+        <div class="preview-footer"><span>DECISION TIMELINE</span><span>3 checks · 0 elevated signals</span></div>
+      </div>
+    </section>
+    <section class="principles" id="how-it-works">
+      <div class="section-index">THE ASSURANCE FLOW <span>01 — 03</span></div>
+      <div class="principle-grid">
+        <article><span class="principle-number">01</span><h3>Prove the channel</h3><p>Email and phone codes are short-lived, single-use challenges. Their hashes are stored; delivery is explicit about demo mode.</p></article>
+        <article><span class="principle-number">02</span><h3>Bind the intent</h3><p>A desktop QR is a specific, expiring request. Only the initiating browser can consume an authenticated mobile approval.</p></article>
+        <article id="security"><span class="principle-number">03</span><h3>Explain the decision</h3><p>A deterministic policy scores available signals, keeps mandatory checks separate, and records each check in an inspectable timeline.</p></article>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><a class="brand" href="/"><span class="brand-mark mini"><i></i><i></i><i></i></span><span>sentinel<span class="brand-light">pass</span></span></a><span>Passwordless authentication with intent assurance.</span><span class="mono">PROTOTYPE · SECURITY FIRST</span></footer>
+</div>
+{% endblock %}

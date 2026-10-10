@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Review login request | SentinelPass{% endblock %}
+{% block body_class %}auth-body{% endblock %}
+{% block content %}
+<main class="auth-layout approve-layout">
+  <a class="brand auth-brand" href="/"><span class="brand-mark"><i></i><i></i><i></i></span><span>sentinel<span class="brand-light">pass</span></span></a>
+  <section class="auth-panel">
+    <div class="eyebrow"><span class="status-dot"></span> LOGIN INTENT REVIEW</div>
+    <h1>Review this sign-in.</h1>
+    <p class="muted">A desktop browser is requesting access to your account. Approve only if you initiated this request.</p>
+    <div class="request-context"><span class="context-icon">▣</span><div><span class="mono">REQUESTING BROWSER</span><strong id="request-browser">Checking request…</strong><small id="request-expiry">Short-lived request</small></div></div>
+    <div id="approval-message" class="form-message" role="status" aria-live="polite"></div>
+    <div id="approval-actions" class="approval-actions hidden"><button id="approve-request" class="button button-primary button-wide">Approve this desktop</button><button id="deny-request" class="button button-danger-outline button-wide">Deny request</button></div>
+    <a class="back-link" href="/login">← Return to sign in</a>
+  </section>
+  <aside class="auth-aside"><div class="aside-rule"></div><span class="mono">TRANSACTION BOUND</span><blockquote>This approval applies to one request, on one browser, for a limited time.</blockquote><p>Mobile and desktop sessions remain separate.</p><div class="aside-mark">SP<span> / 02</span></div></aside>
+</main>
+<script>window.SENTINEL_QR = {{ request_id|tojson }};</script>
+{% endblock %}
